@@ -1,0 +1,19 @@
+{
+  "name": "com.gulievstudio.globalilluminationoverride",
+  "displayName": "GI Override Volumes",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "unityRelease": "0f1",
+  "description": "Box-volume-based global illumination overrides using signed distance fields and shader injection. Works with handwritten URP shaders and Shader Graph.",
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "17.0.0"
+  },
+  "author": {
+    "name": "Damir Guliev",
+    "url": "https://github.com/dgul3d",
+    "email": "dguliev.mail@gmail.com"
+  },
+  "changelogUrl": "https://github.com/dgul3d/com.gulievstudio.globalilluminationoverride/blob/main/CHANGELOG.md",
+  "documentationUrl": "https://github.com/dgul3d/com.gulievstudio.globalilluminationoverride/blob/main/README.md",
+  "licensesUrl": "https://github.com/dgul3d/com.gulievstudio.globalilluminationoverride/blob/main/LICENSE.md"
+}
