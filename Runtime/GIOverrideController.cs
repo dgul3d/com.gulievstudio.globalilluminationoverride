@@ -19,7 +19,7 @@ namespace GlobalIlluminationOverride
     [AddComponentMenu("GI Override/GI Override Controller")]
     public class GIOverrideController : MonoBehaviour
     {
-        public const int MAX_VOLUMES = 8;
+        public const int MAX_VOLUMES = 8; //Change this in GIOverride.hlsl as well
 
         private static GIOverrideController _instance;
         public static GIOverrideController Instance => _instance;

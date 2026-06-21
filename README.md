@@ -1,5 +1,7 @@
 # GI Override Volumes
 
+![gi_override_volumes_demo_image](Documentation~/images/MovingGIVolume.gif)
+
 Box-volume-based global illumination overrides for Unity URP. Replaces the standard ambient SH inside a region using oriented signed distance field blending, compatible with handwritten shaders and Shader Graph.
 
 ## How it works
@@ -15,28 +17,39 @@ Box-volume-based global illumination overrides for Unity URP. Replaces the stand
 
 Add `GIOverrideController` to a scene-level GameObject (e.g. *GraphicsManager*).
 
+![gi_override_volumes_demo_image](Documentation~/images/GIOverrideController.png)
+
 Create `GIOverridePreset` assets via **Assets → Create → GI Override → Preset** and populate the **Presets** array on the controller.
+
+![gi_override_volumes_demo_image](Documentation~/images/GIOverridePreset.png)
 
 ### 2 — Volumes
 
 Add `GIOverrideVolume` to any GameObject. Set **Preset Index** to the index of the desired preset in the controller's array. Resize and reposition using the scene handle — it works like a Box Collider and respects the transform's rotation and scale.
 
+Set **Blend Smoothness** to control the volume's blending.
+
+![gi_override_volumes_demo_image](Documentation~/images/GIOverrideVolume.png)
+
 ### 3 — Shaders
+
+**Shader Graph (Custom Function node):**
+ - prepacked subgraph is included in the package. It's located in the `Packages/com.gulievstudio.globalilluminationoverride/Shaders/Subgraphs/SGSUB_GIOverride.shadergraph`
+- demo of how to use it located in the `/Samples/Shaders/SG_GIOverriden` shader graph.
+
+![gi_override_volumes_demo_image](Documentation~/images/GIOverrideShader.png)
+
+Shader Graph override for the Lit target shader isolates difference between standard GI and overridden GI and then adds it to the emission slot.
+
+This is a workaround. For the best results you should override original SampleGI by creating Lit shader from scratch.
 
 **Handwritten URP shader:**
 ```hlsl
 #include "Packages/com.gulievstudio.globalilluminationoverride/Shaders/Include/GIOverride.hlsl"
 
-// In the fragment stage:
+// In the fragment stage replace `gi = SampleGI(positionWS, normalWS);` with:
 half3 gi = GIO_SampleGI(positionWS, normalWS);
 ```
-
-**Shader Graph (Custom Function node):**
-- Source: `File`
-- File: `Packages/com.gulievstudio.globalilluminationoverride/Shaders/Include/GIOverride.hlsl`
-- Function: `GIO_SampleGI`
-- Inputs: `WorldPos (Vector3)`, `NormalWS (Vector3)`
-- Outputs: `StandardSH (Vector3)`, `BakedGI (Vector3)`
 
 ## Update modes
 
@@ -56,13 +69,9 @@ When a `GIOverridePreset`'s colors are changed at runtime via code, call `GIOver
 |---|---|---|
 | `GIO_MAX_VOLUMES` | `8` | Maximum simultaneously active volumes |
 
-Override the limit before including the file:
-```hlsl
-#define GIO_MAX_VOLUMES 4
-#include "Packages/com.gulievstudio.globalilluminationoverride/Shaders/Include/GIOverride.hlsl"
-```
+By default the limit is hardcoded  to 8. You can override it by changing constant in GIOverrideController.cs and GIOverride.hlsl
 
-Keeping `GIO_MAX_VOLUMES` low (e.g. 4) is recommended for mobile targets to reduce per-fragment loop cost.
+Keeping constant value low (e.g. 4) is recommended for mobile targets to reduce per-fragment loop cost.
 
 ## Notes
 

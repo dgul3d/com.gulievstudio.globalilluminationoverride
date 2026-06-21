@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58e980259f551b24591719b0c18c8703, type: 3}
-  m_Name: CyanRed
+  m_Name: TrailerInsideGI
   m_EditorClassIdentifier: GulievStudio.GlobalIlluminationOverride.Runtime::GulievStudio.GlobalIlluminationOverride.GIOverridePreset
-  _skyColor: {r: 0.2924527, g: 1, b: 0.86899716, a: 1}
-  _equatorColor: {r: 0.5320754, g: 0.5320754, b: 0.5320754, a: 1}
-  _groundColor: {r: 1, g: 0.043062847, b: 0, a: 1}
+  _skyColor: {r: 0.45296368, g: 0.56554747, b: 0.8207547, a: 1}
+  _equatorColor: {r: 0.496351, g: 0.6353568, b: 0.735849, a: 1}
+  _groundColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}

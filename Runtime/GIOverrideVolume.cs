@@ -6,9 +6,9 @@ namespace GlobalIlluminationOverride
     [AddComponentMenu("GI Override/GI Override Volume")]
     public class GIOverrideVolume : MonoBehaviour
     {
-        [SerializeField] private Vector3 _size = new(10f, 5f, 10f);
+        [SerializeField] private Vector3 _size = new(1f, 1f, 1f);
         [SerializeField] private Vector3 _center = Vector3.zero;
-        [SerializeField] private float _blendSmoothness = 1f;
+        [SerializeField] private float _blendSmoothness = 0.1f;
         [SerializeField] private int _presetIndex;
 
         public Vector3 Size

@@ -1,7 +1,7 @@
 {
   "name": "com.gulievstudio.globalilluminationoverride",
   "displayName": "GI Override Volumes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "unity": "6000.0",
   "unityRelease": "0f1",
   "description": "Box-volume-based global illumination overrides using signed distance fields and shader injection. Works with handwritten URP shaders and Shader Graph.",
